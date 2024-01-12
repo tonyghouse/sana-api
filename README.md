@@ -1,2 +1,1 @@
-# sana-api
-Sana - AI and automation tool
+# Sana - AI and automation tool

@@ -22,3 +22,53 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+.DS_Store
+
+### Intellij ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.classpath
+.project
+.settings/
+
+### Spring Boot ###
+target/
+spring-boot-starter-*/target/
+*.jar
+*.war
+*.ear
+
+### Maven ###
+log/
+target/
+
+### Gradle ###
+.gradle/
+build/
+
+### Logs ###
+logs/
+*.log
+*.log.*
+*.access
+*.lck
+
+### OS-specific ###
+.DS_Store
+Thumbs.db
+
+### IntelliJ IDEA ###
+.idea/
+
+### Eclipse ###
+.settings/
+bin/
+*.launch
+
+### VS Code ###
+.vscode/
