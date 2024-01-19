@@ -1,7 +1,6 @@
 package com.ghouse.sana.service;
 
 import com.ghouse.sana.dto.GptRQ;
-import com.ghouse.sana.dto.GptRS;
 import com.ghouse.sana.dto.MessageBlock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

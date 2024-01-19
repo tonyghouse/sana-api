@@ -33,18 +33,8 @@ public class GptProxy {
             return responseEntity.getBody();
 
         } catch (Exception exp) {
-            log.error("Exception when calling api: {} ", exp);
-            return exp.getMessage();
+            log.error("Exception when calling api: {} ", exp.getMessage());
+            throw exp;
         }
     }
 }
-
-
-
-//            String prompt = "Translate the following English text to French: 'Hello, how are you?'";
-//            Map<String, Object> requestBody = new HashMap<>();
-//            requestBody.put("model", "gpt-3.5-turbo");
-//            requestBody.put(
-//                    "messages", List.of(
-//                            Map.of("role", "system", "content", "You are a helpful assistant."),
-//                            Map.of("role", "user", "content", prompt)
