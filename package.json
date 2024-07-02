@@ -1,0 +1,13 @@
+{
+  "name": "sana-api",
+  "version": "1.0.0",
+  "description": "A Misc API application",
+  "main": "index.js",
+  "author": "tonyghouse",
+  "license": "MIT",
+   "dependencies": {
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
