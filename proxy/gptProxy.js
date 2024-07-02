@@ -21,9 +21,18 @@ class GptProxy {
             console.log("API Response Body: " + response.data);
             return response.data;
         } catch (error) {
-            console.error("Exception when calling API: ", error.message);
+            if (error.response) {
+                console.error("API Error Response:");
+                console.error("Status:", error.response.status);
+                console.error("Data:", error.response.data);
+            } else if (error.request) {
+                console.error("No API Response:", error.request);
+            } else {
+                console.error("Error:", error.message);
+            }
             throw error;
         }
+        
     }
 }
 
