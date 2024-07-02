@@ -28,13 +28,13 @@ app.get('/', (req, res) => {
 app.post('/terminal-1', async (req, res) => {
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
-        return res.status(401).json("Wrong Credentials");
+        return res.status(401).json("Auth Missing");
     }
 
     const userNameAndPassword = getUserNameAndPassword(authHeader);
 
     if (userNameAndPassword !== allowedCredentials) {
-        return res.status(401).json(null);
+        return res.status(401).json("Wrong Credentials");
     }
 
     console.log(`Terminal-1 send Req GptRQ: ${JSON.stringify(req.body)}`);
