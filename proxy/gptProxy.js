@@ -3,7 +3,7 @@ const axios = require('axios');
 
 class GptProxy {
     constructor() {
-        this.apiKey = process.env.OPENAI_API_KEY;
+        this.apiKey = process.env.OPENAI_API_SECRET;
         if (!this.apiKey) {
             throw new Error('OPENAI_API_KEY environment variable is not set.');
         }
