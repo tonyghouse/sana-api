@@ -1,9 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const base64 = require('base-64');
-const utf8 = require('utf8');
-const cors = require('cors');
-
+import express from 'express';
+import bodyParser from 'body-parser';
+import base64 from 'base-64';
+import utf8 from 'utf8';
+import cors from 'cors';
 
 
 const app = express();

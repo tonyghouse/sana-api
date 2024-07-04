@@ -1,6 +1,6 @@
-require('dotenv').config();
-const axios = require('axios');
-
+import dotenv from 'dotenv';
+import axios from 'axios';
+dotenv.config();
 class GptProxy {
     constructor() {
         this.apiKey = process.env.OPENAI_API_SECRET;
