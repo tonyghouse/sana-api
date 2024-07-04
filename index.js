@@ -3,13 +3,14 @@ import bodyParser from 'body-parser';
 import base64 from 'base-64';
 import utf8 from 'utf8';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 
+dotenv.config();
 const app = express();
 app.use(cors()); 
-const port = 3000;
 
-require('dotenv').config();
+const port = 3000;
 const allowedCredentials = process.env.ALLOWED_USERNAME_PASSWORD;
 
 if (!allowedCredentials) {
