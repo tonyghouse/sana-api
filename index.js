@@ -1,63 +1,21 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import base64 from 'base-64';
-import utf8 from 'utf8';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import {GptService} from './service/GptService.js';
-import {GptProxy}  from './proxy/GptProxy.js';
+import homeController from './controller/HomeController.js';
+import terminal1Controller from './controller/Terminal1Controller.js';
+import terminal2Controller from './controller/Terminal2Controller.js';
 
 dotenv.config();
 const app = express();
 app.use(cors()); 
-
-const port = 3000;
-const allowedCredentials = process.env.ALLOWED_USERNAME_PASSWORD;
-
-if (!allowedCredentials) {
-    throw new Error('ALLOWED_USERNAME_PASSWORD environment variable is not set.');
-}
-
-
-
 app.use(bodyParser.json());
 
-const gptProxy = new GptProxy();
-const gptService = new GptService(gptProxy);
+const port = 3000;
 
-
-app.get('/', (req, res) => {
-    res.send('<h1>Welcome to the SANA API</h1><p>A Misc API application</p>');
-});
-
-app.post('/terminal-1', async (req, res) => {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader) {
-        return res.status(401).json("Auth Missing");
-    }
-
-    const userNameAndPassword = getUserNameAndPassword(authHeader);
-
-    if (userNameAndPassword !== allowedCredentials) {
-        return res.status(401).json("Wrong Credentials");
-    }
-
-    console.log(`Terminal-1 send Req GptRQ: ${JSON.stringify(req.body)}`);
-    try {
-      const gptRQ = req.body;
-      const response = await gptService.sendReq(gptRQ);
-      return res.status(200).json(response);
-    } catch (error) {
-      console.error('Error handling request:', error);
-      return res.status(500).json({ error: 'An error occurred' });
-    }
-});
-
-function getUserNameAndPassword(authHeader) {
-    const token = authHeader.substring('Bearer '.length);
-    const bytes = base64.decode(token);
-    return utf8.decode(bytes);
-}
+app.use('/', homeController);
+app.use('/terminal-1', terminal1Controller);
+app.use('/terminal-2', terminal2Controller);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
