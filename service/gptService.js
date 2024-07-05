@@ -1,4 +1,4 @@
-export default class GptService {
+export  class GptService {
     constructor(gptProxy) {
       this.gptProxy = gptProxy;
     }

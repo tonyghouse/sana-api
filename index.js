@@ -4,8 +4,8 @@ import base64 from 'base-64';
 import utf8 from 'utf8';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import GptService from './service/GptService';
-import GptProxy  from './proxy/GptProxy';
+import {GptService} from './service/GptService.js';
+import {GptProxy}  from './proxy/GptProxy.js';
 
 dotenv.config();
 const app = express();

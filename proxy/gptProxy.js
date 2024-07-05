@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
 dotenv.config();
-export default class GptProxy {
+export class GptProxy {
     constructor() {
         this.apiKey = process.env.OPENAI_API_SECRET;
         if (!this.apiKey) {
