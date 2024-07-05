@@ -5,9 +5,8 @@ import dotenv from 'dotenv';
 import homeController from './controller/HomeController.js';
 import terminal1Controller from './controller/Terminal1Controller.js';
 import terminal2Controller from './controller/Terminal2Controller.js';
-
 dotenv.config();
-const app = express();
+const app = express();  
 app.use(cors()); 
 app.use(bodyParser.json());
 

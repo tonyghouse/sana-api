@@ -1,9 +1,11 @@
-export  class GptService {
-    constructor(gptProxy) {
+export class GptService {
+    private gptProxy: any;
+
+    constructor(gptProxy: any) {
       this.gptProxy = gptProxy;
     }
   
-    async sendReq(gptRQ) {
+    async sendReq(gptRQ: any) {
       if (!gptRQ.model) {
         gptRQ.model = 'gpt-3.5-turbo';
       }
@@ -15,4 +17,3 @@ export  class GptService {
       return response;
     }
   }
-  

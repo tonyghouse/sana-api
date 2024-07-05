@@ -14,7 +14,7 @@ if (!allowedCredentials) {
     throw new Error('ALLOWED_USERNAME_PASSWORD environment variable is not set.');
 }
 
-function getUserNameAndPassword(authHeader) {
+function getUserNameAndPassword(authHeader: string) {
     const token = authHeader.substring('Bearer '.length);
     const bytes = base64.decode(token);
     return utf8.decode(bytes);

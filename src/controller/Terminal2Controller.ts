@@ -1,5 +1,5 @@
 import express from 'express';
-import { GptService } from '../services/GptService.js';
+import { GptService } from '../service/GptService.js';
 import { GptProxy } from '../proxy/GptProxy.js';
 
 const router = express.Router();

@@ -1,15 +1,19 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
 dotenv.config();
+
 export class GptProxy {
+    private apiKey: string;
+
     constructor() {
-        this.apiKey = process.env.OPENAI_API_SECRET;
-        if (!this.apiKey) {
+        const apiKey = process.env.OPENAI_API_SECRET;
+        if (!apiKey) {
             throw new Error('OPENAI_API_KEY environment variable is not set.');
         }
+        this.apiKey = apiKey;
     }
 
-    async sendRequest(gptRQ) {
+    async sendRequest(gptRQ:any) {
         const endpoint = "https://api.openai.com/v1/chat/completions";
 
         const headers = {
@@ -23,7 +27,7 @@ export class GptProxy {
             console.log("API Response Code: " + response.status);
             console.log("API Response Body: " + response.data);
             return response.data;
-        } catch (error) {
+        } catch (error: any) {
             if (error.response) {
                 console.error("API Error Response:");
                 console.error("Status:", error.response.status);
