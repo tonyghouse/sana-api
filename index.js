@@ -4,7 +4,8 @@ import base64 from 'base-64';
 import utf8 from 'utf8';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
+import GptService from './service/GptService';
+import GptProxy  from './proxy/GptProxy';
 
 dotenv.config();
 const app = express();
@@ -17,8 +18,7 @@ if (!allowedCredentials) {
     throw new Error('ALLOWED_USERNAME_PASSWORD environment variable is not set.');
 }
 
-const GptService = require('./service/gptService');
-const GptProxy = require('./proxy/gptProxy');
+
 
 app.use(bodyParser.json());
 

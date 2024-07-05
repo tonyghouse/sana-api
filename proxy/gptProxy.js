@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
 dotenv.config();
-class GptProxy {
+export default class GptProxy {
     constructor() {
         this.apiKey = process.env.OPENAI_API_SECRET;
         if (!this.apiKey) {
@@ -38,5 +38,3 @@ class GptProxy {
         
     }
 }
-
-module.exports = GptProxy;
