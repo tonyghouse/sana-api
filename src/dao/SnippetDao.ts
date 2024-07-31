@@ -21,8 +21,6 @@ export class SnippetDao {
       data,
     });
 
-    console.log('Created new snippet:', newSnippet);
-
     return newSnippet;
   }
 

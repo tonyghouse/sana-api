@@ -1,12 +1,14 @@
 import express from 'express';
 import { SnippetDao } from '../dao/SnippetDao.js';
+import { SnippetService } from '../service/SnippetService.js';
 
 const router = express.Router();
 const snippetDao = new SnippetDao();
+const snippetService = new SnippetService(snippetDao);
 
 router.get('/', async (req, res) => {
     try {
-        const snippets = await snippetDao.getAllSnippets();
+        const snippets = await snippetService.getAllSnippets();
         res.json(snippets);
     } catch (error) {
         console.error('Error fetching snippets:', error);
@@ -17,7 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const id = parseInt(req.params.id, 10);
     try {
-        const snippet = await snippetDao.getSnippetById(id);
+        const snippet = await snippetService.getSnippetById(id);
         if (snippet) {
             res.json(snippet);
         } else {
@@ -36,7 +38,7 @@ router.post('/', async (req, res) => {
             res.status(400).json({ error: 'Invalid input data.' });
             return;
         }
-        const snippet = await snippetDao.createSnippet({ name, text });
+        const snippet = await snippetService.createSnippet({ name, text });
         res.status(201).json(snippet);
     } catch (error) {
         console.error('Error creating snippet:', error);
@@ -48,7 +50,7 @@ router.put('/:id', async (req, res) => {
     const id = parseInt(req.params.id, 10);
     try {
         const { name, text } = req.body;
-        const snippet = await snippetDao.updateSnippet(id, { name, text });
+        const snippet = await snippetService.updateSnippet(id, { name, text });
         if (snippet) {
             res.json(snippet);
         } else {
@@ -63,7 +65,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const id = parseInt(req.params.id, 10);
     try {
-        const snippet = await snippetDao.deleteSnippet(id);
+        const snippet = await snippetService.deleteSnippet(id);
         if (snippet) {
             res.json({ message: 'Snippet deleted successfully.' });
         } else {
