@@ -31,8 +31,7 @@ router.post('/', async (req, res) => {
     if (userNameAndPassword !== allowedCredentials) {
         return res.status(401).json("Wrong Credentials");
     }
-
-    console.log(`Terminal-1 send Req GptRQ: ${JSON.stringify(req.body)}`);
+    
     try {
         const gptRQ = req.body;
         const response = await gptService.sendReq(gptRQ);

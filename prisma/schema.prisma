@@ -1,0 +1,18 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["sana"]
+}
+
+model snippet {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar
+  text String @db.VarChar
+
+  @@schema("sana")
+}
