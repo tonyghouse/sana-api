@@ -8,7 +8,7 @@ const router = express.Router();
 const gptProxy = new GptProxy();
 const gptService = new GptService(gptProxy);
 
-const allowedCredentials = process.env.ALLOWED_USERNAME_PASSWORD;
+const allowedCredentials = "testuser:testpwd";
 
 if (!allowedCredentials) {
     throw new Error('ALLOWED_USERNAME_PASSWORD environment variable is not set.');
